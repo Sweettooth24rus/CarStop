@@ -1,0 +1,3 @@
+ninja: Entering directory `C:\cocos2d-x-3.17.2\Project\test3\proj.android\app\.cxx\cmake\debug\x86'
+[1/2] Building CXX object CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o
+[2/2] Linking CXX shared library ..\..\..\..\build\intermediates\cmake\debug\obj\x86\libMyGame.so

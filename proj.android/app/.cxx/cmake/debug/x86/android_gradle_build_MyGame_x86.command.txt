@@ -1,0 +1,7 @@
+Executable : C:\AndrSDK\cmake\3.10.2.4988404\bin\ninja.exe
+arguments : 
+-C
+C:\cocos2d-x-3.17.2\Project\test3\proj.android\app\.cxx\cmake\debug\x86
+MyGame
+jvmArgs : 
+
