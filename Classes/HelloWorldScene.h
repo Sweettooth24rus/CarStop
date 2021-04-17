@@ -26,18 +26,41 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "ui\CocosGUI.h"
 
-class HelloWorld : public cocos2d::Scene
-{
+using namespace cocos2d;
+using namespace ui;
+
+class HelloWorld : public cocos2d::Scene {
+private:
+    Sprite *blueBackground;
+    Sprite *road;
+    Sprite *car;
+    Sprite *tireFront;
+    Sprite *tireBack;
+
+    Button *buttonStop;
+    Button *buttonStart;
+
+    Label *labelDistance;
+    Label *labelSpeed;
+    Label *labelWeight;
+    Label *labelTires;
+
+    TextField *textDistance;
+    TextField *textSpeed;
+    TextField *textWeight;
+    TextField *textTires;
+
+    void respawnRoad(float dt);
+
 public:
     static cocos2d::Scene* createScene();
 
     virtual bool init();
-    
-    // a selector callback
+
     void menuCloseCallback(cocos2d::Ref* pSender);
-    
-    // implement the "static create()" method manually
+
     CREATE_FUNC(HelloWorld);
 };
 

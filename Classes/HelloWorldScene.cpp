@@ -40,12 +40,10 @@ static void problemLoading(const char* filename)
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init()
-{
+bool HelloWorld::init() {
     //////////////////////////////
     // 1. super init first
-    if ( !Scene::init() )
-    {
+    if (!Scene::init()) {
         return false;
     }
 
@@ -58,21 +56,18 @@ bool HelloWorld::init()
 
     // add a "close" icon to exit the progress. it's an autorelease object
     auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+            "CloseNormal.png",
+            "CloseSelected.png",
+            CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
 
     if (closeItem == nullptr ||
         closeItem->getContentSize().width <= 0 ||
-        closeItem->getContentSize().height <= 0)
-    {
+        closeItem->getContentSize().height <= 0) {
         problemLoading("'CloseNormal.png' and 'CloseSelected.png'");
-    }
-    else
-    {
-        float x = origin.x + visibleSize.width - closeItem->getContentSize().width/2;
-        float y = origin.y + closeItem->getContentSize().height/2;
-        closeItem->setPosition(Vec2(x,y));
+    } else {
+        float x = origin.x + visibleSize.width - closeItem->getContentSize().width / 2;
+        float y = origin.y + closeItem->getContentSize().height / 2;
+        closeItem->setPosition(Vec2(x, y));
     }
 
     // create menu, it's an autorelease object
@@ -80,54 +75,150 @@ bool HelloWorld::init()
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
 
-    /////////////////////////////
-    // 3. add your codes below...
+    ///---------- Определения ----------
 
-    // add a label shows "Hello World"
-    // create and initialize a label
+    blueBackground = Sprite::create("BlueBackground.png");
+    road = Sprite::create("Road.png");
+    car = Sprite::create("Granta.png");
+    tireFront = Sprite::create("Tire.png");
+    tireBack = Sprite::create("Tire.png");
 
-    auto label = Label::createWithTTF("Hello Word", "fonts/Marker Felt.ttf", 24);
-    if (label == nullptr)
-    {
-        problemLoading("'fonts/Marker Felt.ttf'");
-    }
-    else
-    {
-        // position the label on the center of the screen
-        label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                                origin.y + visibleSize.height - label->getContentSize().height));
+    buttonStop = Button::create("ButtonStopNormal.png", "ButtonStopSelected.png");
+    buttonStart = Button::create("ButtonStartNormal.png", "ButtonStartSelected.png");
 
-        // add the label as a child to this layer
-        this->addChild(label, 1);
-    }
+    labelDistance = Label::createWithTTF("Введите расстояние", "fonts/arial.ttf", 10);
+    labelSpeed = Label::createWithTTF("Введите скорость", "fonts/arial.ttf", 10);
+    labelWeight = Label::createWithTTF("Введите вес", "fonts/arial.ttf", 10);
+    labelTires = Label::createWithTTF("Введите размер колёс", "fonts/arial.ttf", 10);
 
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-    if (sprite == nullptr)
-    {
-        problemLoading("'HelloWorld.png'");
-    }
-    else
-    {
-        // position the sprite on the center of the screen
-        sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    textDistance = TextField::create("1", "fonts/arial.ttf", 10);
+    textSpeed = TextField::create("2", "fonts/arial.ttf", 10);
+    textWeight = TextField::create("3", "fonts/arial.ttf", 10);
+    textTires = TextField::create("4", "fonts/arial.ttf", 10);
 
-        // add the sprite as a child to this layer
-        this->addChild(sprite, 0);
-    }
+    ///---------- Свойства объектов ----------
+
+    blueBackground->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+
+    road->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+
+    car->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 - origin.y));
+    car->setScale(1.5);
+
+    tireFront->setPosition(Vec2(car->getPositionX() + 82, car->getPositionY() - 45));
+    tireFront->setScale(0.08);
+
+    tireBack->setPosition(Vec2(car->getPositionX() - 73, car->getPositionY() - 45));
+    tireBack->setScale(0.08);
+
+
+    buttonStart->setPosition(Vec2(visibleSize.width - 35, visibleSize.height + 10));
+    buttonStart->setScale(0.5);
+
+    buttonStop->setPosition(Vec2(visibleSize.width - 35, visibleSize.height - 10));
+    buttonStop->setScale(0.5);
+
+
+    labelDistance->setPosition(Vec2(80, visibleSize.height + 20));
+    labelDistance->setWidth(150);
+    labelDistance->enableOutline(Color4B(0, 0, 0, 255), 1);
+
+    labelSpeed->setPosition(Vec2(80, visibleSize.height - 30));
+    labelSpeed->setWidth(150);
+    labelSpeed->enableOutline(Color4B(0, 0, 0, 255), 1);
+
+    labelWeight->setPosition(Vec2(80, visibleSize.height - 80));
+    labelWeight->setWidth(150);
+    labelWeight->enableOutline(Color4B(0, 0, 0, 255), 1);
+
+    labelTires->setPosition(Vec2(80, visibleSize.height - 130));
+    labelTires->setWidth(150);
+    labelTires->enableOutline(Color4B(0, 0, 0, 255), 1);
+
+
+    textDistance->setPosition(Vec2(labelDistance->getPositionX() - 70, labelDistance->getPositionY() - 25));
+
+    textSpeed->setPosition(Vec2(labelSpeed->getPositionX() - 70, labelSpeed->getPositionY() - 25));
+
+    textWeight->setPosition(Vec2(labelWeight->getPositionX() - 70, labelWeight->getPositionY() - 25));
+
+    textTires->setPosition(Vec2(labelTires->getPositionX() - 70, labelTires->getPositionY() - 25));
+
+    ///---------- Функции для кнопок ----------
+
+    buttonStart->addTouchEventListener([&](Ref* sender, Widget::TouchEventType type) {
+        if (type == Widget::TouchEventType::BEGAN) {
+            tireFront->setScale(tireFront->getScale() * 2);
+            tireBack->setScale(tireBack->getScale() * 2);
+        }
+    });
+
+    buttonStop->addTouchEventListener([&](Ref* sender, Widget::TouchEventType type) {
+        if (type == Widget::TouchEventType::BEGAN) {
+            tireFront->setScale(tireFront->getScale() / 2);
+            tireBack->setScale(tireBack->getScale() / 2);
+        }
+    });
+
+    textDistance->addEventListener([&](Ref* sender, TextField::EventType type) {
+        if (type == ui::TextField::EventType::DETACH_WITH_IME) {
+            tireBack->setScale(tireBack->getScale() * stof(textDistance->getString()));
+        }
+    });
+
+    textSpeed->addEventListener([&](Ref* sender, TextField::EventType type) {
+        if (type == ui::TextField::EventType::DETACH_WITH_IME) {
+            tireBack->setScale(tireBack->getScale() * stof(textSpeed->getString()));
+        }
+    });
+
+    textWeight->addEventListener([&](Ref* sender, TextField::EventType type) {
+        if (type == ui::TextField::EventType::DETACH_WITH_IME) {
+            tireBack->setScale(tireBack->getScale() * stof(textWeight->getString()));
+        }
+    });
+
+    textTires->addEventListener([&](Ref* sender, TextField::EventType type) {
+        if (type == ui::TextField::EventType::DETACH_WITH_IME) {
+            tireBack->setScale(tireBack->getScale() * stof(textTires->getString()));
+        }
+    });
+
+    ///---------- Добавление на экран ----------
+
+    this->addChild(blueBackground);
+    this->addChild(road);
+    this->addChild(car);
+    this->addChild(tireFront);
+    this->addChild(tireBack);
+
+    this->addChild(buttonStart);
+    this->addChild(buttonStop);
+
+    this->addChild(labelDistance);
+    this->addChild(labelSpeed);
+    this->addChild(labelWeight);
+    this->addChild(labelTires);
+
+    this->addChild(textDistance);
+    this->addChild(textSpeed);
+    this->addChild(textWeight);
+    this->addChild(textTires);
+
+    //this->schedule(schedule_selector(HelloWorld::respawnRoad), visibleSize.width / 10);
+
     return true;
 }
 
-
-void HelloWorld::menuCloseCallback(Ref* pSender)
-{
+void HelloWorld::menuCloseCallback(Ref* pSender) {
     //Close the cocos2d-x game scene and quit the application
     Director::getInstance()->end();
+}
 
-    /*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() as given above,instead trigger a custom event created in RootViewController.mm as below*/
-
-    //EventCustom customEndEvent("game_scene_close_event");
-    //_eventDispatcher->dispatchEvent(&customEndEvent);
-
-
+void HelloWorld::respawnRoad(float dt) {
+    auto roadTmp = Sprite::create("Road.png");
+    roadTmp->setPosition(Vec2(Director::getInstance()->getVisibleSize().width / 2, Director::getInstance()->getVisibleSize().height / 3));
+    this->addChild(roadTmp);
+    auto roadTmpMove = MoveBy::create(0.05 * Director::getInstance()->getVisibleSize().width, Point(-Director::getInstance()->getVisibleSize().width * 1.5, 0));
+    roadTmp->runAction(roadTmpMove);
 }

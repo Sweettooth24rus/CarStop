@@ -217,6 +217,7 @@
     "objFolder": "C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\app\\build\\intermediates\\cmake\\release\\obj",
     "variantName": "release",
     "validAbiList": [
+      "ARMEABI_V7A",
       "X86"
     ],
     "prefabDirectory": "C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\app\\.cxx\\cmake\\release\\prefab",
