@@ -1,28 +1,41 @@
 ninja: Entering directory `C:\cocos2d-x-3.17.2\Project\test3\proj.android\app\.cxx\cmake\debug\armeabi-v7a'
-[1/3] Building CXX object CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o
-FAILED: CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o 
-C:\AndrSDK\ndk\21.1.6352462\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=armv7-none-linux-androideabi16 --gcc-toolchain=C:/AndrSDK/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/AndrSDK/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DANDROID -DCOCOS2D_DEBUG=1 -DLWS_WITH_LIBUV -DMyGame_EXPORTS -DUSE_FILE32API -I../../../../../../Classes -I../../../../../../cocos2d/cocos/audio/include -I../../../../../../cocos2d -I../../../../../../cocos2d/cocos -I../../../../../../cocos2d/extensions -I../../../../../../cocos2d/cocos/platform -I../../../../../../cocos2d/cocos/base -I../../../../../../cocos2d/cocos/editor-support -I../../../../../../cocos2d/cocos/platform/android -isystem ../../../../../../cocos2d/external/Box2D/include -isystem ../../../../../../cocos2d/external/chipmunk/include -isystem ../../../../../../cocos2d/external/freetype2/include/android/freetype2 -I../../../../../../cocos2d/external/recast/.. -isystem ../../../../../../cocos2d/external/jpeg/include/android -isystem ../../../../../../cocos2d/external/uv/include -isystem ../../../../../../cocos2d/external/webp/include/android -isystem ../../../../../../cocos2d/external/bullet/include -isystem ../../../../../../cocos2d/external/bullet/include/bullet -isystem ../../../../../../cocos2d/external/openssl/include/android -isystem ../../../../../../cocos2d/external/tiff/include/android -isystem ../../../../../../cocos2d/external/websockets/include/android -I../../../../../../cocos2d/external/tinyxml2/. -I../../../../../../cocos2d/external/xxhash/. -I../../../../../../cocos2d/external/xxtea/. -I../../../../../../cocos2d/external/clipper/. -I../../../../../../cocos2d/external/edtaa3func/. -I../../../../../../cocos2d/external/ConvertUTF/. -I../../../../../../cocos2d/external/poly2tri/.. -I../../../../../../cocos2d/external/md5/.. -isystem ../../../../../../cocos2d/external/curl/include/android -isystem ../../../../../../cocos2d/external/png/include/android -IC:/AndrSDK/ndk/21.1.6352462/sources/android/cpufeatures -I../../../../../../cocos2d/external/android-specific/pvmp3dec/include -I../../../../../../cocos2d/external/android-specific/pvmp3dec/src -I../../../../../../cocos2d/external/android-specific/tremolo/. -isystem ../../../../../../cocos2d/external/zlib/include -I../../../../../../cocos2d/external/unzip/. -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -frtti -fexceptions -fsigned-char -O0 -fno-limit-debug-info  -fPIC   -std=gnu++11 -MD -MT CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o -MF CMakeFiles\MyGame.dir\Classes\HelloWorldScene.cpp.o.d -o CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o -c ../../../../../../Classes/HelloWorldScene.cpp
-../../../../../../Classes/HelloWorldScene.cpp:167:39: error: no viable conversion from '__bind<void (HelloWorld::*)(cocos2d::Ref *), HelloWorld *>' to 'const cocos2d::ui::Widget::ccWidgetClickCallback' (aka 'const function<void (cocos2d::Ref *)>')
-    buttonStop->addClickEventListener(CC_CALLBACK_0(HelloWorld::stop, this));
-                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../../../cocos2d/cocos/base/ccMacros.h:340:53: note: expanded from macro 'CC_CALLBACK_0'
-#define CC_CALLBACK_0(__selector__,__target__, ...) std::bind(&__selector__,__target__, ##__VA_ARGS__)
-                                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-C:/AndrSDK/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/c++/v1\functional:2283:5: note: candidate constructor not viable: no known conversion from '__bind<void (HelloWorld::*)(cocos2d::Ref *), HelloWorld *>' to 'std::nullptr_t' (aka 'nullptr_t') for 1st argument
-    function(nullptr_t) _NOEXCEPT {}
+[1/3] Building CXX object CMakeFiles/MyGame.dir/Classes/AppDelegate.cpp.o
+[2/3] Building CXX object CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o
+../../../../../../Classes/HelloWorldScene.cpp:208:19: warning: 'setText' is deprecated [-Wdeprecated-declarations]
+    textDistance->setText("do");
+                  ^
+../../../../../../cocos2d/cocos\ui/UITextField.h:415:5: note: 'setText' has been explicitly marked deprecated here
+    CC_DEPRECATED_ATTRIBUTE void setText(const std::string& text){this->setString(text);}
     ^
-C:/AndrSDK/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/c++/v1\functional:2284:5: note: candidate constructor not viable: no known conversion from '__bind<void (HelloWorld::*)(cocos2d::Ref *), HelloWorld *>' to 'const std::__ndk1::function<void (cocos2d::Ref *)> &' for 1st argument
-    function(const function&);
+../../../../../../cocos2d/cocos/platform/CCPlatformMacros.h:274:52: note: expanded from macro 'CC_DEPRECATED_ATTRIBUTE'
+    #define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                   ^
+../../../../../../Classes/HelloWorldScene.cpp:220:19: warning: 'setText' is deprecated [-Wdeprecated-declarations]
+    textDistance->setText("posle");
+                  ^
+../../../../../../cocos2d/cocos\ui/UITextField.h:415:5: note: 'setText' has been explicitly marked deprecated here
+    CC_DEPRECATED_ATTRIBUTE void setText(const std::string& text){this->setString(text);}
     ^
-C:/AndrSDK/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/c++/v1\functional:2285:5: note: candidate constructor not viable: no known conversion from '__bind<void (HelloWorld::*)(cocos2d::Ref *), HelloWorld *>' to 'std::__ndk1::function<void (cocos2d::Ref *)> &&' for 1st argument
-    function(function&&) _NOEXCEPT;
+../../../../../../cocos2d/cocos/platform/CCPlatformMacros.h:274:52: note: expanded from macro 'CC_DEPRECATED_ATTRIBUTE'
+    #define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                   ^
+../../../../../../Classes/HelloWorldScene.cpp:227:19: warning: 'setText' is deprecated [-Wdeprecated-declarations]
+    textDistance->setText("posle1");
+                  ^
+../../../../../../cocos2d/cocos\ui/UITextField.h:415:5: note: 'setText' has been explicitly marked deprecated here
+    CC_DEPRECATED_ATTRIBUTE void setText(const std::string& text){this->setString(text);}
     ^
-C:/AndrSDK/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/c++/v1\functional:2287:5: note: candidate template ignored: requirement '__callable<std::__ndk1::__bind<void (HelloWorld::*)(cocos2d::Ref *), HelloWorld *>, false>::value' was not satisfied [with _Fp = std::__ndk1::__bind<void (HelloWorld::*)(cocos2d::Ref *), HelloWorld *>]
-    function(_Fp);
+../../../../../../cocos2d/cocos/platform/CCPlatformMacros.h:274:52: note: expanded from macro 'CC_DEPRECATED_ATTRIBUTE'
+    #define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                   ^
+../../../../../../Classes/HelloWorldScene.cpp:232:19: warning: 'setText' is deprecated [-Wdeprecated-declarations]
+    textDistance->setText("posle2");
+                  ^
+../../../../../../cocos2d/cocos\ui/UITextField.h:415:5: note: 'setText' has been explicitly marked deprecated here
+    CC_DEPRECATED_ATTRIBUTE void setText(const std::string& text){this->setString(text);}
     ^
-../../../../../../cocos2d/cocos\ui/UIWidget.h:320:61: note: passing argument to parameter 'callback' here
-    void addClickEventListener(const ccWidgetClickCallback& callback);
-                                                            ^
-1 error generated.
-[2/3] Building CXX object CMakeFiles/MyGame.dir/Classes/AppDelegate.cpp.o
-ninja: build stopped: subcommand failed.
+../../../../../../cocos2d/cocos/platform/CCPlatformMacros.h:274:52: note: expanded from macro 'CC_DEPRECATED_ATTRIBUTE'
+    #define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                   ^
+4 warnings generated.
+[3/3] Linking CXX shared library ..\..\..\..\build\intermediates\cmake\debug\obj\armeabi-v7a\libMyGame.so

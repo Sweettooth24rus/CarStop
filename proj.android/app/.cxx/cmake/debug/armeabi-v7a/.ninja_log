@@ -727,3 +727,6 @@
 102	7525	640314217	CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o	5428a88d313dd302
 7525	27198	640314236	../../../../build/intermediates/cmake/debug/obj/armeabi-v7a/libMyGame.so	2d08fd6218c22830
 198	10995	640314418	CMakeFiles/MyGame.dir/Classes/AppDelegate.cpp.o	5022369bb7d34e7a
+3968	34613	640401642	CMakeFiles/MyGame.dir/Classes/AppDelegate.cpp.o	5022369bb7d34e7a
+3973	35044	640401643	CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o	5428a88d313dd302
+35044	54635	640401662	../../../../build/intermediates/cmake/debug/obj/armeabi-v7a/libMyGame.so	2d08fd6218c22830

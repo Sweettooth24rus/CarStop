@@ -30,11 +30,18 @@
 
 using namespace cocos2d;
 using namespace ui;
+using namespace std;
 
 class HelloWorld : public cocos2d::Scene {
 private:
+    const float secInHour = 3600;
+
+    Size visibleSize;
+    Vec2 origin;
+
     Sprite *blueBackground;
-    Sprite *road;
+    Sprite *roadPart1;
+    Sprite *roadPart2;
     Sprite *car;
     Sprite *tireFront;
     Sprite *tireBack;
@@ -52,7 +59,21 @@ private:
     TextField *textWeight;
     TextField *textTires;
 
-    void respawnRoad(float dt);
+    MoveBy *roadPart1Move;
+    MoveBy *roadPart2Move;
+    RotateBy *tireFrontRotate;
+    RotateBy *tireBackRotate;
+
+    float distance;
+    float speed;
+    float weight;
+    float tires;
+
+    ///---------- Функции ----------
+
+    void testTire(float dt);
+
+    float distToDeg(float dist);
 
 public:
     static cocos2d::Scene* createScene();

@@ -47,8 +47,8 @@ bool HelloWorld::init() {
         return false;
     }
 
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    visibleSize = Director::getInstance()->getVisibleSize();
+    origin = Director::getInstance()->getVisibleOrigin();
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
@@ -73,12 +73,16 @@ bool HelloWorld::init() {
     // create menu, it's an autorelease object
     auto menu = Menu::create(closeItem, NULL);
     menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
+    this->addChild(menu, 10);
 
     ///---------- Определения ----------
 
+    speed = 1000;
+    tires = 40;
+
     blueBackground = Sprite::create("BlueBackground.png");
-    road = Sprite::create("Road.png");
+    roadPart1 = Sprite::create("Road.png");
+    roadPart2 = Sprite::create("Road.png");
     car = Sprite::create("Granta.png");
     tireFront = Sprite::create("Tire.png");
     tireBack = Sprite::create("Tire.png");
@@ -100,7 +104,9 @@ bool HelloWorld::init() {
 
     blueBackground->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 
-    road->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+    roadPart1->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + origin.y));
+
+    roadPart2->setPosition(Vec2(visibleSize.width / 2 + roadPart2->getContentSize().width - 1, visibleSize.height / 2 + origin.y));
 
     car->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 - origin.y));
     car->setScale(1.5);
@@ -136,27 +142,42 @@ bool HelloWorld::init() {
     labelTires->enableOutline(Color4B(0, 0, 0, 255), 1);
 
 
-    textDistance->setPosition(Vec2(labelDistance->getPositionX() - 70, labelDistance->getPositionY() - 25));
+    textDistance->setPosition(Vec2(labelDistance->getPositionX(), labelDistance->getPositionY() - 25));
+    textDistance->setMaxLength(10);
 
-    textSpeed->setPosition(Vec2(labelSpeed->getPositionX() - 70, labelSpeed->getPositionY() - 25));
+    textSpeed->setPosition(Vec2(labelSpeed->getPositionX(), labelSpeed->getPositionY() - 25));
+    textDistance->setMaxLength(10);
 
-    textWeight->setPosition(Vec2(labelWeight->getPositionX() - 70, labelWeight->getPositionY() - 25));
+    textWeight->setPosition(Vec2(labelWeight->getPositionX(), labelWeight->getPositionY() - 25));
+    textDistance->setMaxLength(10);
 
-    textTires->setPosition(Vec2(labelTires->getPositionX() - 70, labelTires->getPositionY() - 25));
+    textTires->setPosition(Vec2(labelTires->getPositionX(), labelTires->getPositionY() - 25));
+    textDistance->setMaxLength(10);
 
     ///---------- Функции для кнопок ----------
 
     buttonStart->addTouchEventListener([&](Ref* sender, Widget::TouchEventType type) {
         if (type == Widget::TouchEventType::BEGAN) {
-            tireFront->setScale(tireFront->getScale() * 2);
-            tireBack->setScale(tireBack->getScale() * 2);
+            roadPart1Move = MoveBy::create(secInHour, Point(-speed * 1000, 0));
+            roadPart2Move = MoveBy::create(secInHour, Point(-speed * 1000, 0));
+            tireFrontRotate = RotateBy::create(secInHour, distToDeg(speed));
+            tireBackRotate = RotateBy::create(secInHour, distToDeg(speed));
+
+            roadPart1->runAction(RepeatForever::create(roadPart1Move));
+            roadPart2->runAction(RepeatForever::create(roadPart2Move));
+            tireFront->runAction(RepeatForever::create(tireFrontRotate));
+            tireBack->runAction(RepeatForever::create(tireBackRotate));
+            this->schedule(schedule_selector(HelloWorld::testTire));
         }
     });
 
     buttonStop->addTouchEventListener([&](Ref* sender, Widget::TouchEventType type) {
         if (type == Widget::TouchEventType::BEGAN) {
-            tireFront->setScale(tireFront->getScale() / 2);
-            tireBack->setScale(tireBack->getScale() / 2);
+            roadPart1->stopAllActions();
+            roadPart2->stopAllActions();
+            tireFront->stopAllActions();
+            tireBack->stopAllActions();
+            this->unschedule(schedule_selector(HelloWorld::testTire));
         }
     });
 
@@ -186,26 +207,25 @@ bool HelloWorld::init() {
 
     ///---------- Добавление на экран ----------
 
-    this->addChild(blueBackground);
-    this->addChild(road);
-    this->addChild(car);
-    this->addChild(tireFront);
-    this->addChild(tireBack);
+    this->addChild(blueBackground, 0);
+    this->addChild(roadPart1, 1);
+    this->addChild(roadPart2, 1);
+    this->addChild(car, 2);
+    this->addChild(tireFront, 3);
+    this->addChild(tireBack, 3);
 
-    this->addChild(buttonStart);
-    this->addChild(buttonStop);
+    this->addChild(buttonStart, 2);
+    this->addChild(buttonStop, 2);
 
-    this->addChild(labelDistance);
-    this->addChild(labelSpeed);
-    this->addChild(labelWeight);
-    this->addChild(labelTires);
+    this->addChild(labelDistance, 2);
+    this->addChild(labelSpeed, 2);
+    this->addChild(labelWeight, 2);
+    this->addChild(labelTires, 2);
 
-    this->addChild(textDistance);
-    this->addChild(textSpeed);
-    this->addChild(textWeight);
-    this->addChild(textTires);
-
-    //this->schedule(schedule_selector(HelloWorld::respawnRoad), visibleSize.width / 10);
+    this->addChild(textDistance, 2);
+    this->addChild(textSpeed, 2);
+    this->addChild(textWeight, 2);
+    this->addChild(textTires, 2);
 
     return true;
 }
@@ -215,10 +235,16 @@ void HelloWorld::menuCloseCallback(Ref* pSender) {
     Director::getInstance()->end();
 }
 
-void HelloWorld::respawnRoad(float dt) {
-    auto roadTmp = Sprite::create("Road.png");
-    roadTmp->setPosition(Vec2(Director::getInstance()->getVisibleSize().width / 2, Director::getInstance()->getVisibleSize().height / 3));
-    this->addChild(roadTmp);
-    auto roadTmpMove = MoveBy::create(0.05 * Director::getInstance()->getVisibleSize().width, Point(-Director::getInstance()->getVisibleSize().width * 1.5, 0));
-    roadTmp->runAction(roadTmpMove);
+void HelloWorld::testTire(float dt) {
+    if (visibleSize.width / 2 - roadPart1->getPositionX() >= roadPart1->getContentSize().width)
+        roadPart1->setPositionX(roadPart2->getPositionX() + roadPart2->getContentSize().width - 1);
+    else if (visibleSize.width / 2 - roadPart2->getPositionX() >= roadPart2->getContentSize().width)
+        roadPart2->setPositionX(roadPart1->getPositionX() + roadPart1->getContentSize().width - 1);
+}
+
+float HelloWorld::distToDeg(float dist) {
+    float deg;
+    deg = speed / (2.0 * M_PI * tires / 1000);
+    deg *= 360;
+    return deg;
 }

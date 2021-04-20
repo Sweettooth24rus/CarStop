@@ -573,9 +573,6 @@ protected:
     bool _is3D;
     Vec3 _deltaAngle;
     Vec3 _startAngle;
-
-private:
-    CC_DISALLOW_COPY_AND_ASSIGN(RotateBy);
 };
 
 /** @class MoveBy
