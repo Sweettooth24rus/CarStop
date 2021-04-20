@@ -77,8 +77,7 @@ bool HelloWorld::init() {
 
     ///---------- Определения ----------
 
-    speed = 1000;
-    tires = 40;
+    speed = 5000;
 
     blueBackground = Sprite::create("BlueBackground.png");
     roadPart1 = Sprite::create("Road.png");
@@ -146,22 +145,24 @@ bool HelloWorld::init() {
     textDistance->setMaxLength(10);
 
     textSpeed->setPosition(Vec2(labelSpeed->getPositionX(), labelSpeed->getPositionY() - 25));
-    textDistance->setMaxLength(10);
+    textSpeed->setMaxLength(10);
+    textSpeed->setText(to_string(speed / 100));
 
     textWeight->setPosition(Vec2(labelWeight->getPositionX(), labelWeight->getPositionY() - 25));
-    textDistance->setMaxLength(10);
+    textWeight->setMaxLength(10);
 
     textTires->setPosition(Vec2(labelTires->getPositionX(), labelTires->getPositionY() - 25));
-    textDistance->setMaxLength(10);
+    textTires->setMaxLength(10);
+    textTires->setText(to_string(250 / ((car->getContentSize().width * car->getScale()) / (tireFront->getContentSize().width * tireFront->getScale()))));
 
     ///---------- Функции для кнопок ----------
 
     buttonStart->addTouchEventListener([&](Ref* sender, Widget::TouchEventType type) {
         if (type == Widget::TouchEventType::BEGAN) {
-            roadPart1Move = MoveBy::create(secInHour, Point(-speed * 1000, 0));
-            roadPart2Move = MoveBy::create(secInHour, Point(-speed * 1000, 0));
-            tireFrontRotate = RotateBy::create(secInHour, distToDeg(speed));
-            tireBackRotate = RotateBy::create(secInHour, distToDeg(speed));
+            roadPart1Move = MoveBy::create(secInHour, Point(roadSpeed(), 0));
+            roadPart2Move = MoveBy::create(secInHour, Point(roadSpeed(), 0));
+            tireFrontRotate = RotateBy::create(secInHour, distToDeg());
+            tireBackRotate = RotateBy::create(secInHour, distToDeg());
 
             roadPart1->runAction(RepeatForever::create(roadPart1Move));
             roadPart2->runAction(RepeatForever::create(roadPart2Move));
@@ -189,7 +190,7 @@ bool HelloWorld::init() {
 
     textSpeed->addEventListener([&](Ref* sender, TextField::EventType type) {
         if (type == ui::TextField::EventType::DETACH_WITH_IME) {
-            tireBack->setScale(tireBack->getScale() * stof(textSpeed->getString()));
+            speed = stof(textSpeed->getString()) * 100;
         }
     });
 
@@ -201,7 +202,8 @@ bool HelloWorld::init() {
 
     textTires->addEventListener([&](Ref* sender, TextField::EventType type) {
         if (type == ui::TextField::EventType::DETACH_WITH_IME) {
-            tireBack->setScale(tireBack->getScale() * stof(textTires->getString()));
+            tireFront->setScale(0.08 * stof(textTires->getString()) / 29.6117);
+            tireBack->setScale(0.08 * stof(textTires->getString()) / 29.6117);
         }
     });
 
@@ -242,9 +244,13 @@ void HelloWorld::testTire(float dt) {
         roadPart2->setPositionX(roadPart1->getPositionX() + roadPart1->getContentSize().width - 1);
 }
 
-float HelloWorld::distToDeg(float dist) {
+float HelloWorld::roadSpeed() {
+    return -1 * speed * 100;
+}
+
+float HelloWorld::distToDeg() {
     float deg;
-    deg = speed / (2.0 * M_PI * tires / 1000);
+    deg = speed / (M_PI * 9.315 * (tireFront->getContentSize().width * tireFront->getScale()) / roadPart1->getContentSize().width);
     deg *= 360;
     return deg;
 }

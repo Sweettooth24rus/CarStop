@@ -194,7 +194,6 @@
       "project": {
         "compilerSettingsCacheFolder": "C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\.cxx",
         "cxxFolder": "C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\.cxx",
-        "ideBuildTargetAbi": "arm64-v8a,armeabi-v7a,armeabi",
         "isBuildOnlyTargetAbiEnabled": true,
         "isCmakeBuildCohabitationEnabled": false,
         "isNativeCompilerSettingsCacheEnabled": false,
@@ -218,7 +217,8 @@
     "objFolder": "C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\app\\build\\intermediates\\cmake\\debug\\obj",
     "variantName": "debug",
     "validAbiList": [
-      "ARMEABI_V7A"
+      "ARMEABI_V7A",
+      "X86"
     ],
     "prefabDirectory": "C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\app\\.cxx\\cmake\\debug\\prefab",
     "prefabPackageDirectoryList": []

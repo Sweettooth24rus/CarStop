@@ -1,3 +1,49 @@
 ninja: Entering directory `C:\cocos2d-x-3.17.2\Project\test3\proj.android\app\.cxx\cmake\debug\x86'
 [1/2] Building CXX object CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o
+../../../../../../Classes/HelloWorldScene.cpp:149:16: warning: 'setText' is deprecated [-Wdeprecated-declarations]
+    textSpeed->setText(to_string(speed / 100));
+               ^
+../../../../../../cocos2d/cocos\ui/UITextField.h:415:5: note: 'setText' has been explicitly marked deprecated here
+    CC_DEPRECATED_ATTRIBUTE void setText(const std::string& text){this->setString(text);}
+    ^
+../../../../../../cocos2d/cocos/platform/CCPlatformMacros.h:274:52: note: expanded from macro 'CC_DEPRECATED_ATTRIBUTE'
+    #define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                   ^
+../../../../../../Classes/HelloWorldScene.cpp:156:16: warning: 'setText' is deprecated [-Wdeprecated-declarations]
+    textTires->setText(to_string(250 / ((car->getContentSize().width * car->getScale()) / (tireFront->getContentSize().width * tireFront->getScale()))));
+               ^
+../../../../../../cocos2d/cocos\ui/UITextField.h:415:5: note: 'setText' has been explicitly marked deprecated here
+    CC_DEPRECATED_ATTRIBUTE void setText(const std::string& text){this->setString(text);}
+    ^
+../../../../../../cocos2d/cocos/platform/CCPlatformMacros.h:274:52: note: expanded from macro 'CC_DEPRECATED_ATTRIBUTE'
+    #define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                   ^
+../../../../../../Classes/HelloWorldScene.cpp:167:27: warning: 'setText' is deprecated [-Wdeprecated-declarations]
+            textDistance->setText(to_string((float)roadPart1->getContentSize().width / (tireFront->getContentSize().width * tireFront->getScale())));
+                          ^
+../../../../../../cocos2d/cocos\ui/UITextField.h:415:5: note: 'setText' has been explicitly marked deprecated here
+    CC_DEPRECATED_ATTRIBUTE void setText(const std::string& text){this->setString(text);}
+    ^
+../../../../../../cocos2d/cocos/platform/CCPlatformMacros.h:274:52: note: expanded from macro 'CC_DEPRECATED_ATTRIBUTE'
+    #define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                   ^
+../../../../../../Classes/HelloWorldScene.cpp:168:24: warning: 'setText' is deprecated [-Wdeprecated-declarations]
+            textSpeed->setText(to_string((float)roadPart1->getContentSize().width / (tireBack->getContentSize().width * tireBack->getScale())));
+                       ^
+../../../../../../cocos2d/cocos\ui/UITextField.h:415:5: note: 'setText' has been explicitly marked deprecated here
+    CC_DEPRECATED_ATTRIBUTE void setText(const std::string& text){this->setString(text);}
+    ^
+../../../../../../cocos2d/cocos/platform/CCPlatformMacros.h:274:52: note: expanded from macro 'CC_DEPRECATED_ATTRIBUTE'
+    #define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                   ^
+../../../../../../Classes/HelloWorldScene.cpp:169:25: warning: 'setText' is deprecated [-Wdeprecated-declarations]
+            textWeight->setText(to_string(tires));
+                        ^
+../../../../../../cocos2d/cocos\ui/UITextField.h:415:5: note: 'setText' has been explicitly marked deprecated here
+    CC_DEPRECATED_ATTRIBUTE void setText(const std::string& text){this->setString(text);}
+    ^
+../../../../../../cocos2d/cocos/platform/CCPlatformMacros.h:274:52: note: expanded from macro 'CC_DEPRECATED_ATTRIBUTE'
+    #define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                   ^
+5 warnings generated.
 [2/2] Linking CXX shared library ..\..\..\..\build\intermediates\cmake\debug\obj\x86\libMyGame.so

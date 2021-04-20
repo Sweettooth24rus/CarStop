@@ -73,7 +73,9 @@ private:
 
     void testTire(float dt);
 
-    float distToDeg(float dist);
+    float roadSpeed();
+
+    float distToDeg();
 
 public:
     static cocos2d::Scene* createScene();
