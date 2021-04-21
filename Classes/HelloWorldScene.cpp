@@ -159,10 +159,15 @@ bool HelloWorld::init() {
 
     buttonStart->addTouchEventListener([&](Ref* sender, Widget::TouchEventType type) {
         if (type == Widget::TouchEventType::BEGAN) {
-            roadPart1Move = MoveBy::create(secInHour, Point(roadSpeed(), 0));
-            roadPart2Move = MoveBy::create(secInHour, Point(roadSpeed(), 0));
-            tireFrontRotate = RotateBy::create(secInHour, distToDeg());
-            tireBackRotate = RotateBy::create(secInHour, distToDeg());
+            roadPart1->stopAllActions();
+            roadPart2->stopAllActions();
+            tireFront->stopAllActions();
+            tireBack->stopAllActions();
+
+            roadPart1Move = MoveBy::create(10, Point(roadSpeed(), 0));
+            roadPart2Move = MoveBy::create(10, Point(roadSpeed(), 0));
+            tireFrontRotate = RotateBy::create(10, distToDeg());
+            tireBackRotate = RotateBy::create(10, distToDeg());
 
             roadPart1->runAction(RepeatForever::create(roadPart1Move));
             roadPart2->runAction(RepeatForever::create(roadPart2Move));
@@ -178,7 +183,25 @@ bool HelloWorld::init() {
             roadPart2->stopAllActions();
             tireFront->stopAllActions();
             tireBack->stopAllActions();
-            this->unschedule(schedule_selector(HelloWorld::testTire));
+
+            int x = 30;
+
+            auto roadPart1Movez = MoveBy::create(x, Point(roadSpeed() / (25.0 / x), 0));
+            auto roadPart2Movez = MoveBy::create(x, Point(roadSpeed() / (25.0 / x), 0));
+            auto tireFrontRotatez = RotateBy::create(x, distToDeg() / (25.0 / x));
+            auto tireBackRotatez = RotateBy::create(x, distToDeg() / (25.0 / x));
+
+            auto roadPart1Ease = EaseSineOut::create(roadPart1Movez);
+            auto roadPart2Ease = EaseSineOut::create(roadPart2Movez);
+            auto tireFrontEase = EaseSineOut::create(tireFrontRotatez);
+            auto tireBackEase = EaseSineOut::create(tireBackRotatez);
+
+            roadPart1->runAction(roadPart1Ease);
+            roadPart2->runAction(roadPart2Ease);
+            tireFront->runAction(tireFrontEase);
+            tireBack->runAction(tireBackEase);
+
+            //this->unschedule(schedule_selector(HelloWorld::testTire));
         }
     });
 
@@ -245,12 +268,12 @@ void HelloWorld::testTire(float dt) {
 }
 
 float HelloWorld::roadSpeed() {
-    return -1 * speed * 100;
+    return -1 * speed;
 }
 
 float HelloWorld::distToDeg() {
     float deg;
-    deg = speed / (M_PI * 9.315 * (tireFront->getContentSize().width * tireFront->getScale()) / roadPart1->getContentSize().width);
+    deg = speed / (M_PI * (tireFront->getContentSize().width * tireFront->getScale()));
     deg *= 360;
     return deg;
 }
