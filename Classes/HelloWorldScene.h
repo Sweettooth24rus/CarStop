@@ -27,19 +27,38 @@
 
 #include "cocos2d.h"
 #include "ui\CocosGUI.h"
+#include "time.h"
+#include "fstream"
+#include "external/json/document.h"
+#include "external/json/ostreamwrapper.h"
+#include "external/json/istreamwrapper.h"
+#include "external/json/writer.h"
 
 using namespace cocos2d;
 using namespace ui;
 using namespace std;
+using namespace rapidjson;
 
 class HelloWorld : public cocos2d::Scene {
 private:
+
+    ///---------- Структуры ----------
+
+    struct DistWeight {
+        float distance;
+        float weight;
+    };
+
+    ///---------- Константы ----------
+
+    const string FILENAME = "test.json";
+
+    ///---------- Переменные ----------
 
     Size visibleSize;
     Vec2 origin;
 
     Sprite *blueBackground;
-    Sprite *roadTmp;
     Sprite *roadPart1;
     Sprite *roadPart2;
     Sprite *car;
@@ -69,16 +88,18 @@ private:
     EaseSineOut *tireFrontEase;
     EaseSineOut *tireBackEase;
 
-    float distance;
+    int countDistWeight;
+    DistWeight *distWeight;
     float speed;
     float stopTime;
-    float weight;
+    float stopTimeWeight;
+    float tires;
 
     ///---------- Функции ----------
 
     void roadCircle(float dt);
 
-    void setStopTime();
+    void setStopTime(int i);
 
     float roadSpeed();
 
@@ -87,6 +108,16 @@ private:
     float distToDeg();
 
     float distToDegEase();
+
+    void saveData();
+
+    bool loadData();
+
+    void distWeightRand();
+
+    void distWeightManual();
+
+    int getRandDistWeight();
 
 public:
     static cocos2d::Scene* createScene();

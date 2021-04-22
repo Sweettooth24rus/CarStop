@@ -54,6 +54,8 @@ distribution.
 #   include <cstdlib>
 #   include <cstring>
 #   include <cstdarg>
+#include <string>
+
 #endif
 
 /*
@@ -1492,7 +1494,7 @@ public:
     	this Document. The memory for the Text
     	is managed by the Document.
     */
-    XMLText* NewText( const char* text );
+    XMLText* NewText( const char* text);
     /**
     	Create a new Declaration associated with
     	this Document. The memory for the object

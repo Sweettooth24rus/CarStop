@@ -1,115 +1,98 @@
 ninja: Entering directory `C:\cocos2d-x-3.17.2\Project\test3\proj.android\app\.cxx\cmake\debug\armeabi-v7a'
-[1/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/physics3d/CCPhysics3DDebugDrawer.cpp.o
-[2/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/renderer/CCMeshCommand.cpp.o
-[3/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/renderer/CCRenderer.cpp.o
-[4/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/renderer/CCVertexAttribBinding.cpp.o
-[5/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/3d/CCSkybox.cpp.o
-[6/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/renderer/CCGLProgramCache.cpp.o
-[7/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/renderer/CCTexture2D.cpp.o
-[8/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/platform/CCImage.cpp.o
-[9/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/renderer/CCTextureAtlas.cpp.o
-[10/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/renderer/ccGLStateCache.cpp.o
-[11/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCActionCamera.cpp.o
-[12/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCActionCatmullRom.cpp.o
-[13/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCActionGrid.cpp.o
-[14/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/base/CCConfiguration.cpp.o
-[15/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCAction.cpp.o
-[16/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCActionEase.cpp.o
-[17/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCActionPageTurn3D.cpp.o
-[18/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCActionGrid3D.cpp.o
-[19/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCActionProgressTimer.cpp.o
-[20/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCActionInterval.cpp.o
-[21/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCActionTiledGrid.cpp.o
-[22/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/base/CCDirector.cpp.o
-[23/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCActionTween.cpp.o
-[24/87] Building CXX object CMakeFiles/MyGame.dir/proj.android/app/jni/hellocpp/main.cpp.o
-[25/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCDrawingPrimitives.cpp.o
-[26/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCCameraBackgroundBrush.cpp.o
-[27/87] Building CXX object CMakeFiles/MyGame.dir/Classes/AppDelegate.cpp.o
-[28/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCDrawNode.cpp.o
-[29/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCFontFNT.cpp.o
-[30/87] Building CXX object CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o
-../../../../../../Classes/HelloWorldScene.cpp:168:27: warning: 'setText' is deprecated [-Wdeprecated-declarations]
-            textDistance->setText(to_string((float)roadPart1->getContentSize().width / (tireFront->getContentSize().width * tireFront->getScale())));
-                          ^
+[1/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/base/CCUserDefault.cpp.o
+[2/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/base/CCUserDefault-android.cpp.o
+[3/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/platform/CCSAXParser.cpp.o
+[4/49] Building CXX object engine/external/tinyxml2/CMakeFiles/ext_tinyxml2.dir/tinyxml2.cpp.o
+[5/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/CCDataReaderHelper.cpp.o
+[6/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/ProjectNodeReader/ProjectNodeReader.cpp.o
+[7/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/ComAudioReader/ComAudioReader.cpp.o
+[8/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/platform/CCFileUtils.cpp.o
+[9/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/CCSGUIReader.cpp.o
+[10/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/NodeReader/NodeReader.cpp.o
+[11/49] Building CXX object CMakeFiles/MyGame.dir/Classes/AppDelegate.cpp.o
+In file included from ../../../../../../Classes/AppDelegate.cpp:26:
+../../../../../../Classes/HelloWorldScene.h:111:8: warning: extra tokens at end of #endif directive [-Wextra-tokens]
+#endif __HELLOWORLD_SCENE_H__
+       ^
+       //
+1 warning generated.
+[12/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/FlatBuffersSerialize.cpp.o
+[13/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/SingleNodeReader/SingleNodeReader.cpp.o
+[14/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/SpriteReader/SpriteReader.cpp.o
+[15/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/ParticleReader/ParticleReader.cpp.o
+[16/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/WidgetReader.cpp.o
+[17/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/GameMapReader/GameMapReader.cpp.o
+[18/49] Building CXX object CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o
+In file included from ../../../../../../Classes/HelloWorldScene.cpp:25:
+../../../../../../Classes/HelloWorldScene.h:111:8: warning: extra tokens at end of #endif directive [-Wextra-tokens]
+#endif __HELLOWORLD_SCENE_H__
+       ^
+       //
+../../../../../../Classes/HelloWorldScene.cpp:150:19: warning: 'setText' is deprecated [-Wdeprecated-declarations]
+    textDistance->setText(to_string(int(distance / 10.0)));
+                  ^
 ../../../../../../cocos2d/cocos\ui/UITextField.h:415:5: note: 'setText' has been explicitly marked deprecated here
     CC_DEPRECATED_ATTRIBUTE void setText(const std::string& text){this->setString(text);}
     ^
 ../../../../../../cocos2d/cocos/platform/CCPlatformMacros.h:274:52: note: expanded from macro 'CC_DEPRECATED_ATTRIBUTE'
     #define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
                                                    ^
-../../../../../../Classes/HelloWorldScene.cpp:169:24: warning: 'setText' is deprecated [-Wdeprecated-declarations]
-            textSpeed->setText(to_string((float)roadPart1->getContentSize().width / (tireBack->getContentSize().width * tireBack->getScale())));
-                       ^
+../../../../../../Classes/HelloWorldScene.cpp:154:16: warning: 'setText' is deprecated [-Wdeprecated-declarations]
+    textSpeed->setText(to_string(int(speed / 10.0)));
+               ^
 ../../../../../../cocos2d/cocos\ui/UITextField.h:415:5: note: 'setText' has been explicitly marked deprecated here
     CC_DEPRECATED_ATTRIBUTE void setText(const std::string& text){this->setString(text);}
     ^
 ../../../../../../cocos2d/cocos/platform/CCPlatformMacros.h:274:52: note: expanded from macro 'CC_DEPRECATED_ATTRIBUTE'
     #define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
                                                    ^
-../../../../../../Classes/HelloWorldScene.cpp:170:25: warning: 'setText' is deprecated [-Wdeprecated-declarations]
-            textWeight->setText(to_string(tires));
-                        ^
+../../../../../../Classes/HelloWorldScene.cpp:161:16: warning: 'setText' is deprecated [-Wdeprecated-declarations]
+    textTires->setText(to_string(250 / ((car->getContentSize().width * car->getScale()) / (tireFront->getContentSize().width * tireFront->getScale()))));
+               ^
 ../../../../../../cocos2d/cocos\ui/UITextField.h:415:5: note: 'setText' has been explicitly marked deprecated here
     CC_DEPRECATED_ATTRIBUTE void setText(const std::string& text){this->setString(text);}
     ^
 ../../../../../../cocos2d/cocos/platform/CCPlatformMacros.h:274:52: note: expanded from macro 'CC_DEPRECATED_ATTRIBUTE'
     #define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
                                                    ^
-3 warnings generated.
-[31/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCTransitionPageTurn.cpp.o
-[32/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCMenuItem.cpp.o
-[33/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCTransitionProgress.cpp.o
-[34/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/base/CCConsole.cpp.o
-[35/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCParticleSystemQuad.cpp.o
-[36/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCRenderTexture.cpp.o
-[37/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/3d/CCMesh.cpp.o
-[38/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/2d/CCTransition.cpp.o
-[39/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/3d/CCAnimate3D.cpp.o
-[40/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/ui/UIButton.cpp.o
-[41/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/deprecated/CCDeprecated.cpp.o
-[42/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCBFileLoader.cpp.o
-[43/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCLabelTTFLoader.cpp.o
-[44/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCControlButtonLoader.cpp.o
-[45/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCLayerColorLoader.cpp.o
-[46/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCBReader.cpp.o
-[47/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCBAnimationManager.cpp.o
-[48/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCLabelBMFontLoader.cpp.o
-[49/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCControlLoader.cpp.o
-[50/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCLayerGradientLoader.cpp.o
-[51/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCMenuItemImageLoader.cpp.o
-[52/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCNode+CCBRelativePositioning.cpp.o
-[53/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCMenuItemLoader.cpp.o
-[54/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCLayerLoader.cpp.o
-[55/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCScrollViewLoader.cpp.o
-[56/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCNodeLoader.cpp.o
-[57/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCSpriteLoader.cpp.o
-[58/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCNodeLoaderLibrary.cpp.o
-[59/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCParticleSystemQuadLoader.cpp.o
-[60/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocosbuilder/CCScale9SpriteLoader.cpp.o
-[61/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/CCActionFrame.cpp.o
-[62/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/CCActionObject.cpp.o
-[63/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/CCActionManagerEx.cpp.o
-[64/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/CCActionNode.cpp.o
-[65/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/TriggerBase.cpp.o
-[66/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/TriggerMng.cpp.o
-[67/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/CCComRender.cpp.o
-[68/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/CCSSceneReader.cpp.o
-[69/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/TriggerObj.cpp.o
-[70/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/CocoStudio.cpp.o
-[71/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/CCSGUIReader.cpp.o
-[72/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/Sprite3DReader/Sprite3DReader.cpp.o
-[73/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/FlatBuffersSerialize.cpp.o
-[74/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/spine/Cocos2dAttachmentLoader.cpp.o
-[75/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/spine/AttachmentVertices.cpp.o
-[76/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/spine/SkeletonAnimation.cpp.o
-[77/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/spine/SkeletonBatch.cpp.o
-[78/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/spine/SkeletonRenderer.cpp.o
-[79/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/__/extensions/GUI/CCControlExtension/CCControlButton.cpp.o
-[80/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/spine/SkeletonTwoColorBatch.cpp.o
-[81/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/__/extensions/GUI/CCControlExtension/CCControlSwitch.cpp.o
-[82/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/ActionTimeline/CSLoader.cpp.o
-[83/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/__/extensions/GUI/CCScrollView/CCTableView.cpp.o
-[84/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/spine/spine-cocos2dx.cpp.o
-[85/87] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/__/extensions/GUI/CCScrollView/CCScrollView.cpp.o
-[86/87] Linking CXX static library lib\libcocos2d.a
+../../../../../../Classes/HelloWorldScene.cpp:345:16: warning: 'setText' is deprecated [-Wdeprecated-declarations]
+    textTires->setText(doc.FindMember("tires")->value.GetString());
+               ^
+../../../../../../cocos2d/cocos\ui/UITextField.h:415:5: note: 'setText' has been explicitly marked deprecated here
+    CC_DEPRECATED_ATTRIBUTE void setText(const std::string& text){this->setString(text);}
+    ^
+../../../../../../cocos2d/cocos/platform/CCPlatformMacros.h:274:52: note: expanded from macro 'CC_DEPRECATED_ATTRIBUTE'
+    #define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                   ^
+5 warnings generated.
+[19/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/TextReader/TextReader.cpp.o
+[20/49] Linking CXX static library lib\libext_tinyxml2.a
+[21/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/ListViewReader/ListViewReader.cpp.o
+[22/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/PageViewReader/PageViewReader.cpp.o
+[23/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/Node3DReader/Node3DReader.cpp.o
+[24/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/SkeletonReader/BoneNodeReader.cpp.o
+[25/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/CheckBoxReader/CheckBoxReader.cpp.o
+[26/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/TextFieldReader/TextFieldReader.cpp.o
+[27/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/LoadingBarReader/LoadingBarReader.cpp.o
+[28/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/TextAtlasReader/TextAtlasReader.cpp.o
+[29/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/SliderReader/SliderReader.cpp.o
+[30/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/LayoutReader/LayoutReader.cpp.o
+[31/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/Particle3DReader/Particle3DReader.cpp.o
+[32/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/Sprite3DReader/Sprite3DReader.cpp.o
+[33/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/SkeletonReader/SkeletonNodeReader.cpp.o
+[34/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/UserCameraReader/UserCameraReader.cpp.o
+[35/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/TextBMFontReader/TextBMFontReader.cpp.o
+[36/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/Light3DReader/Light3DReader.cpp.o
+[37/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/ImageViewReader/ImageViewReader.cpp.o
+[38/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/ScrollViewReader/ScrollViewReader.cpp.o
+[39/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/ButtonReader/ButtonReader.cpp.o
+[40/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/GameNode3DReader/GameNode3DReader.cpp.o
+[41/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/ActionTimeline/CCActionTimelineCache.cpp.o
+[42/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/ArmatureNodeReader/ArmatureNodeReader.cpp.o
+[43/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/TabControlReader/TabControlReader.cpp.o
+[44/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/__/extensions/GUI/CCScrollView/CCTableView.cpp.o
+[45/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/__/extensions/GUI/CCScrollView/CCScrollView.cpp.o
+[46/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/spine/spine-cocos2dx.cpp.o
+[47/49] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/ActionTimeline/CSLoader.cpp.o
+[48/49] Linking CXX static library lib\libcocos2d.a
+[49/49] Linking CXX shared library ..\..\..\..\build\intermediates\cmake\debug\obj\armeabi-v7a\libMyGame.so
