@@ -34,12 +34,12 @@ using namespace std;
 
 class HelloWorld : public cocos2d::Scene {
 private:
-    const float secInHour = 3600;
 
     Size visibleSize;
     Vec2 origin;
 
     Sprite *blueBackground;
+    Sprite *roadTmp;
     Sprite *roadPart1;
     Sprite *roadPart2;
     Sprite *car;
@@ -64,18 +64,29 @@ private:
     RotateBy *tireFrontRotate;
     RotateBy *tireBackRotate;
 
+    EaseSineOut *roadPart1Ease;
+    EaseSineOut *roadPart2Ease;
+    EaseSineOut *tireFrontEase;
+    EaseSineOut *tireBackEase;
+
     float distance;
     float speed;
+    float stopTime;
     float weight;
-    float tires;
 
     ///---------- Функции ----------
 
-    void testTire(float dt);
+    void roadCircle(float dt);
+
+    void setStopTime();
 
     float roadSpeed();
 
+    float roadSpeedEase();
+
     float distToDeg();
+
+    float distToDegEase();
 
 public:
     static cocos2d::Scene* createScene();
@@ -87,4 +98,4 @@ public:
     CREATE_FUNC(HelloWorld);
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif __HELLOWORLD_SCENE_H__
