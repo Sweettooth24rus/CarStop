@@ -39,6 +39,22 @@ using namespace ui;
 using namespace std;
 using namespace rapidjson;
 
+///---------- Класс наследник ease для торможения ----------
+
+class Ease : public ActionEase {
+private:
+    float speed;
+public:
+	const static int MOVE = 0;
+	const static int ROTATE = 1;
+
+	Ease(float time, float spd, Node* elem, int type);
+
+	void update(float time) override;
+};
+
+///---------- Главный класс приложения ----------
+
 class HelloWorld : public cocos2d::Scene {
 private:
 
@@ -57,6 +73,9 @@ private:
 
     Size visibleSize;
     Vec2 origin;
+	float xResize;
+	float yResize;
+	float averResize;
 
     Sprite *blueBackground;
     Sprite *roadPart1;
@@ -78,36 +97,28 @@ private:
     TextField *textWeight;
     TextField *textTires;
 
-    MoveBy *roadPart1Move;
-    MoveBy *roadPart2Move;
-    RotateBy *tireFrontRotate;
-    RotateBy *tireBackRotate;
-
-    EaseSineOut *roadPart1Ease;
-    EaseSineOut *roadPart2Ease;
-    EaseSineOut *tireFrontEase;
-    EaseSineOut *tireBackEase;
+    Ease *roadPart1Ease;
+	Ease *roadPart2Ease;
+	Ease *tireFrontEase;
+	Ease *tireBackEase;
 
     int countDistWeight;
     DistWeight *distWeight;
     float speed;
     float stopTime;
-    float stopTimeWeight;
     float tires;
 
     ///---------- Функции ----------
 
     void roadCircle(float dt);
 
+    void roadMove(float dt);
+
     void setStopTime(int i);
 
     float roadSpeed();
 
-    float roadSpeedEase();
-
     float distToDeg();
-
-    float distToDegEase();
 
     void saveData();
 
@@ -122,11 +133,11 @@ private:
 public:
     static cocos2d::Scene* createScene();
 
-    virtual bool init();
+    virtual bool init() override;
 
     void menuCloseCallback(cocos2d::Ref* pSender);
 
     CREATE_FUNC(HelloWorld);
 };
 
-#endif __HELLOWORLD_SCENE_H__
+#endif //__HELLOWORLD_SCENE_H__

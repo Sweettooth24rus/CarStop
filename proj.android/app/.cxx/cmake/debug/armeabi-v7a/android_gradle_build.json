@@ -429,42 +429,6 @@
       "headers": [],
       "output": "C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\app\\.cxx\\cmake\\debug\\armeabi-v7a\\engine\\cocos\\platform\\libcpp_android_spec.a"
     },
-    "MyGame-Debug-armeabi-v7a": {
-      "buildCommand": "C:\\AndrSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\app\\.cxx\\cmake\\debug\\armeabi-v7a\" MyGame",
-      "buildType": "debug",
-      "toolchain": "845701748",
-      "abi": "armeabi-v7a",
-      "artifactName": "MyGame",
-      "files": [
-        {
-          "src": "C:\\cocos2d-x-3.17.2\\Project\\test3\\Classes\\AppDelegate.cpp",
-          "flagsOrdinal": 1,
-          "workingDirectoryOrdinal": 0
-        },
-        {
-          "src": "C:\\cocos2d-x-3.17.2\\Project\\test3\\Classes\\HelloWorldScene.cpp",
-          "flagsOrdinal": 1,
-          "workingDirectoryOrdinal": 0
-        },
-        {
-          "src": "C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\app\\jni\\hellocpp\\main.cpp",
-          "flagsOrdinal": 1,
-          "workingDirectoryOrdinal": 0
-        }
-      ],
-      "headers": [
-        {
-          "header": "C:\\cocos2d-x-3.17.2\\Project\\test3\\Classes\\AppDelegate.h",
-          "workingDirectoryOrdinal": 0
-        },
-        {
-          "header": "C:\\cocos2d-x-3.17.2\\Project\\test3\\Classes\\HelloWorldScene.h",
-          "workingDirectoryOrdinal": 0
-        }
-      ],
-      "output": "C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\app\\build\\intermediates\\cmake\\debug\\obj\\armeabi-v7a\\libMyGame.so",
-      "runtimeFiles": []
-    },
     "cocos2d-Debug-armeabi-v7a": {
       "buildCommand": "C:\\AndrSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\app\\.cxx\\cmake\\debug\\armeabi-v7a\" cocos2d",
       "buildType": "debug",
@@ -6355,6 +6319,42 @@
         }
       ],
       "output": "C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\app\\.cxx\\cmake\\debug\\armeabi-v7a\\lib\\libcocos2d.a"
+    },
+    "MyGame-Debug-armeabi-v7a": {
+      "buildCommand": "C:\\AndrSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\app\\.cxx\\cmake\\debug\\armeabi-v7a\" MyGame",
+      "buildType": "debug",
+      "toolchain": "845701748",
+      "abi": "armeabi-v7a",
+      "artifactName": "MyGame",
+      "files": [
+        {
+          "src": "C:\\cocos2d-x-3.17.2\\Project\\test3\\Classes\\AppDelegate.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "C:\\cocos2d-x-3.17.2\\Project\\test3\\Classes\\HelloWorldScene.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\app\\jni\\hellocpp\\main.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [
+        {
+          "header": "C:\\cocos2d-x-3.17.2\\Project\\test3\\Classes\\AppDelegate.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "C:\\cocos2d-x-3.17.2\\Project\\test3\\Classes\\HelloWorldScene.h",
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "output": "C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\app\\build\\intermediates\\cmake\\debug\\obj\\armeabi-v7a\\libMyGame.so",
+      "runtimeFiles": []
     },
     "ext_unzip-Debug-armeabi-v7a": {
       "buildCommand": "C:\\AndrSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\cocos2d-x-3.17.2\\Project\\test3\\proj.android\\app\\.cxx\\cmake\\debug\\armeabi-v7a\" ext_unzip",

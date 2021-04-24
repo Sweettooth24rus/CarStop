@@ -47,8 +47,11 @@ bool HelloWorld::init() {
         return false;
     }
 
-    visibleSize = Director::getInstance()->getVisibleSize();
+    visibleSize = Director::getInstance()->getWinSize();
     origin = Director::getInstance()->getVisibleOrigin();
+	xResize = visibleSize.width / 1280.0;	//Здесь я пытался сделать переменные для того, чтоб скейлить
+	yResize = visibleSize.height / 720.0;	//под разные разрешения, но оно не получилось(
+	averResize = (visibleSize.width * visibleSize.height) / (1280 * 720);
 
     /////////////////////////////
 
@@ -87,117 +90,103 @@ bool HelloWorld::init() {
     buttonStop = Button::create("ButtonStopNormal.png", "ButtonStopSelected.png");
     buttonStart = Button::create("ButtonStartNormal.png", "ButtonStartSelected.png");
 
-    labelDistance = Label::createWithTTF("Введите тормозной путь в метрах", "fonts/arial.ttf", 10);
-    labelSpeed = Label::createWithTTF("Введите скорость в км/ч", "fonts/arial.ttf", 10);
-    labelWeight = Label::createWithTTF("Введите вес в килограммах", "fonts/arial.ttf", 10);
-    labelTires = Label::createWithTTF("Введите радиус колёс в сантиметрах", "fonts/arial.ttf", 10);
+    labelDistance = Label::createWithTTF("Введите тормозной путь в метрах", "fonts/arial.ttf", 20 * averResize);
+    labelSpeed = Label::createWithTTF("Введите скорость в км/ч", "fonts/arial.ttf", 20 * averResize);
+    labelWeight = Label::createWithTTF("Введите вес в килограммах", "fonts/arial.ttf", 20 * averResize);
+    labelTires = Label::createWithTTF("Введите радиус колёс в сантиметрах", "fonts/arial.ttf", 20 * averResize);
 
-    textDistance = TextField::create("X", "fonts/arial.ttf", 10);
-    textSpeed = TextField::create("", "fonts/arial.ttf", 10);
-    textWeight = TextField::create("X", "fonts/arial.ttf", 10);
-    textTires = TextField::create("", "fonts/arial.ttf", 10);
+    textDistance = TextField::create("X", "fonts/arial.ttf", 20 * averResize);
+    textSpeed = TextField::create("X", "fonts/arial.ttf", 20 * averResize);
+    textWeight = TextField::create("X", "fonts/arial.ttf", 20 * averResize);
+    textTires = TextField::create("X", "fonts/arial.ttf", 20 * averResize);
 
     ///---------- Свойства объектов ----------
 
     blueBackground->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+    blueBackground->setScale(1.5 * averResize);
 
-    roadPart1->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + origin.y));
+    roadPart1->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 250 * yResize));
+	roadPart1->setScale(averResize);
 
-    roadPart2->setPosition(Vec2(visibleSize.width / 2 + roadPart2->getContentSize().width - 1, visibleSize.height / 2 + origin.y));
+    roadPart2->setPosition(Vec2(roadPart1->getPositionX() + roadPart2->getContentSize().width * averResize - 5, visibleSize.height / 2 + 250 * yResize));
+	roadPart2->setScale(averResize);
 
-    car->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 - origin.y));
-    car->setScale(1.5);
+    car->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 50 * yResize));
+	car->setScale(averResize);
 
-    tireFront->setPosition(Vec2(car->getPositionX() + 82, car->getPositionY() - 45));
+    tireFront->setPosition(Vec2(car->getPositionX() + 290 * xResize, car->getPositionY() - 160 * yResize));
 
-    tireBack->setPosition(Vec2(car->getPositionX() - 73, car->getPositionY() - 45));
+    tireBack->setPosition(Vec2(car->getPositionX() - 255 * xResize, car->getPositionY() - 160 * yResize));
 
 
-    buttonStart->setPosition(Vec2(visibleSize.width - 35, visibleSize.height + 10));
-    buttonStart->setScale(0.5);
+    buttonStart->setPosition(Vec2(visibleSize.width - 160 * xResize, visibleSize.height - 50 * yResize));
+    buttonStart->setScale(0.5 * averResize);
 
-    buttonStop->setPosition(Vec2(visibleSize.width - 35, visibleSize.height - 10));
-    buttonStop->setScale(0.5);
+    buttonStop->setPosition(Vec2(visibleSize.width - 160 * xResize, visibleSize.height - 150 * yResize));
+    buttonStop->setScale(0.5 * averResize);
     buttonStop->setEnabled(false);
 
 
-    labelDistance->setPosition(Vec2(110, visibleSize.height + 20));
-    labelDistance->setWidth(200);
+    labelDistance->setPosition(Vec2(220 * xResize, visibleSize.height - 20 * yResize));
+    labelDistance->setWidth(400);
     labelDistance->enableOutline(Color4B(0, 0, 0, 255), 1);
 
-    labelSpeed->setPosition(Vec2(110, visibleSize.height - 30));
-    labelSpeed->setWidth(200);
+    labelSpeed->setPosition(Vec2(220 * xResize, visibleSize.height - 80 * yResize));
+    labelSpeed->setWidth(400);
     labelSpeed->enableOutline(Color4B(0, 0, 0, 255), 1);
 
-    labelWeight->setPosition(Vec2(110, visibleSize.height - 80));
-    labelWeight->setWidth(200);
+    labelWeight->setPosition(Vec2(220 * xResize, visibleSize.height - 140 * yResize));
+    labelWeight->setWidth(400);
     labelWeight->enableOutline(Color4B(0, 0, 0, 255), 1);
 
-    labelTires->setPosition(Vec2(110, visibleSize.height - 130));
-    labelTires->setWidth(200);
+    labelTires->setPosition(Vec2(220 * xResize, visibleSize.height - 200 * yResize));
+    labelTires->setWidth(400);
     labelTires->enableOutline(Color4B(0, 0, 0, 255), 1);
 
 
-    textDistance->setPosition(Vec2(labelDistance->getPositionX() - 75, labelDistance->getPositionY() - 25));
+    textDistance->setPosition(Vec2(labelDistance->getPositionX() - 50 * xResize, labelDistance->getPositionY() - 30 * yResize));
     textDistance->setMaxLength(10);
     textDistance->setEnabled(false);
 
-    textSpeed->setPosition(Vec2(labelSpeed->getPositionX() - 75, labelSpeed->getPositionY() - 25));
+    textSpeed->setPosition(Vec2(labelSpeed->getPositionX() - 50 * xResize, labelSpeed->getPositionY() - 30 * yResize));
     textSpeed->setMaxLength(10);
 
-    textWeight->setPosition(Vec2(labelWeight->getPositionX() - 75, labelWeight->getPositionY() - 25));
+    textWeight->setPosition(Vec2(labelWeight->getPositionX() - 50 * xResize, labelWeight->getPositionY() - 30 * yResize));
     textWeight->setMaxLength(10);
     textWeight->setEnabled(false);
 
-    textTires->setPosition(Vec2(labelTires->getPositionX() - 75, labelTires->getPositionY() - 25));
+    textTires->setPosition(Vec2(labelTires->getPositionX() - 50 * xResize, labelTires->getPositionY() - 30 * yResize));
     textTires->setMaxLength(10);
 
     ///---------- Функции для кнопок и полей ввода ----------
 
     buttonStart->addTouchEventListener([&](Ref* sender, Widget::TouchEventType type) {  //Нажатие на кноку "старт"
         if (type == Widget::TouchEventType::BEGAN) {
-            int i = getRandDistWeight();    //Случайно выбирается тормозной путь и вес
+            int i = getRandDistWeight();    //Случайно выбирается тормозной путь и вес и вписываются в поля
             buttonStop->setEnabled(true);
-            textDistance->setString(to_string(distWeight[i].distance / 10));
+            textDistance->setString(to_string(distWeight[i].distance));
             textWeight->setString(to_string(distWeight[i].weight));
 
-            roadPart1->stopAllActions();    //Убираем все действия
-            roadPart2->stopAllActions();
-            tireFront->stopAllActions();
-            tireBack->stopAllActions();
+			roadPart1->stopAllActions();
+			roadPart2->stopAllActions();
+			tireFront->stopAllActions();
+			tireBack->stopAllActions();
+			
+			setStopTime(i); //Вычисляем время торможения
 
-            setStopTime(i); //Вычисляем время торможения
-
-            roadPart1Move = MoveBy::create(stopTimeWeight, Point(roadSpeed(), 0));  //Задаём движение с постоянной скоростью
-            roadPart2Move = MoveBy::create(stopTimeWeight, Point(roadSpeed(), 0));
-            tireFrontRotate = RotateBy::create(stopTimeWeight, distToDeg());
-            tireBackRotate = RotateBy::create(stopTimeWeight, distToDeg());
-
-            roadPart1->runAction(RepeatForever::create(roadPart1Move)); //Добавляем объектам движение на бесконечность времени
-            roadPart2->runAction(RepeatForever::create(roadPart2Move));
-            tireFront->runAction(RepeatForever::create(tireFrontRotate));
-            tireBack->runAction(RepeatForever::create(tireBackRotate));
+            this->schedule(schedule_selector(HelloWorld::roadMove));	//Запускаем постоянное движение дороги и колёс
         }
     });
 
     buttonStop->addTouchEventListener([&](Ref* sender, Widget::TouchEventType type) {
         if (type == Widget::TouchEventType::BEGAN) {
             buttonStop->setEnabled(false);
+            unschedule(schedule_selector(HelloWorld::roadMove));	//Убираем постоянное движение
 
-            roadPart1->stopAllActions();
-            roadPart2->stopAllActions();
-            tireFront->stopAllActions();
-            tireBack->stopAllActions();
-
-            roadPart1Move = MoveBy::create(stopTimeWeight, Point(roadSpeedEase(), 0));  //Вычисляем новые скорости движения
-            roadPart2Move = MoveBy::create(stopTimeWeight, Point(roadSpeedEase(), 0));  //Как-то опытным путём они получились в два раза меньше обычных
-            tireFrontRotate = RotateBy::create(stopTimeWeight, distToDegEase());
-            tireBackRotate = RotateBy::create(stopTimeWeight, distToDegEase());
-
-            roadPart1Ease = EaseSineOut::create(roadPart1Move); //Создаём "плавное торможение"
-            roadPart2Ease = EaseSineOut::create(roadPart2Move);
-            tireFrontEase = EaseSineOut::create(tireFrontRotate);
-            tireBackEase = EaseSineOut::create(tireBackRotate);
+            roadPart1Ease = new Ease(stopTime, roadSpeed(), roadPart1, Ease::MOVE); //Создаём "плавное торможение"
+            roadPart2Ease = new Ease(stopTime, roadSpeed(), roadPart2, Ease::MOVE);
+            tireFrontEase = new Ease(stopTime, distToDeg(), tireFront, Ease::ROTATE);
+            tireBackEase = new Ease(stopTime, distToDeg(), tireBack, Ease::ROTATE);
 
             roadPart1->runAction(roadPart1Ease);    //Добавляем объектам движение на время торможения
             roadPart2->runAction(roadPart2Ease);
@@ -208,7 +197,7 @@ bool HelloWorld::init() {
 
     textSpeed->addEventListener([&](Ref* sender, TextField::EventType type) {
         if (type == TextField::EventType::DETACH_WITH_IME) {                            //Сразу после ввода скорости
-            speed = stof(textSpeed->getString()) * 10;                              //Изменяем значение переменной
+            speed = stof(textSpeed->getString());                              //Изменяем значение переменной
             saveData();                                                                 //Также сохраняем все данные в виде json файла
         }
     });
@@ -216,8 +205,8 @@ bool HelloWorld::init() {
     textTires->addEventListener([&](Ref* sender, TextField::EventType type) {
         if (type == ui::TextField::EventType::DETACH_WITH_IME) {                        //Сразу после ввода радиуса колёс
             tires = stof(textTires->getString());                                   //Изменяем значение переменной
-            tireFront->setScale(0.08 * stof(textTires->getString()) / 30);    //И меняем масштаб
-            tireBack->setScale(0.08 * stof(textTires->getString()) / 30);
+            tireFront->setScale(averResize * 0.06 * stof(textTires->getString()) / 30);    //И меняем масштаб
+            tireBack->setScale(averResize * 0.06 * stof(textTires->getString()) / 30);
             saveData();                                                                  //Сохраняем
         }
     });
@@ -245,16 +234,16 @@ bool HelloWorld::init() {
     this->addChild(textTires, 2);
 
     if (!loadData()) {    //Если json файл отсутствует, то заполняем дефолтными значениями
-        speed = 100;
+        speed = 10;
         tires = 30;
                                 //Выбор между
         //distWeightManual();   //Ручным
         distWeightRand();       //Случайным
                                 //Вводом тормозного пути и веса
-        textSpeed->setString(to_string(speed / 10.0));
+        textSpeed->setString(to_string(speed));
         textTires->setString(to_string(tires));
-        tireFront->setScale(0.08 * tires / 30);
-        tireBack->setScale(0.08 * tires / 30);
+        tireFront->setScale(averResize * 0.06 * tires / 30);
+        tireBack->setScale(averResize * 0.06 * tires / 30);
     }
 
     this->schedule(schedule_selector(HelloWorld::roadCircle));  //Постоянно выполняется метод зацикливания дороги
@@ -268,35 +257,30 @@ void HelloWorld::menuCloseCallback(Ref* pSender) {
 }
 
 void HelloWorld::roadCircle(float dt) { //Зацикливание дороги
-    if (visibleSize.width / 2 - roadPart1->getPositionX() >= roadPart1->getContentSize().width)         //Если левая часть уходит далеко влево
-        roadPart1->setPositionX(roadPart2->getPositionX() + roadPart2->getContentSize().width - 1);  //То она появляется справа
-    else if (visibleSize.width / 2 - roadPart2->getPositionX() >= roadPart2->getContentSize().width)    //Если правая часть далеко уходит влево
-        roadPart2->setPositionX(roadPart1->getPositionX() + roadPart1->getContentSize().width - 1);  //То она появляется справа
+    if (visibleSize.width / 2 - roadPart1->getPositionX() >= roadPart1->getContentSize().width * averResize)         //Если левая часть уходит далеко влево
+        roadPart1->setPositionX(roadPart2->getPositionX() + roadPart2->getContentSize().width * averResize - 5);  //То она появляется справа
+    else if (visibleSize.width / 2 - roadPart2->getPositionX() >= roadPart2->getContentSize().width * averResize)    //Если правая часть далеко уходит влево
+        roadPart2->setPositionX(roadPart1->getPositionX() + roadPart1->getContentSize().width * averResize - 5);  //То она появляется справа
+}
+
+void HelloWorld::roadMove(float dt) {
+    roadPart1->setPositionX(roadPart1->getPositionX() + roadSpeed());
+    roadPart2->setPositionX(roadPart2->getPositionX() + roadSpeed());
+    tireFront->setRotation(tireFront->getRotation() + distToDeg());
+    tireBack->setRotation(tireBack->getRotation() + distToDeg());
 }
 
 void HelloWorld::setStopTime(int i) {                                                       //Вычисление времени торможения
-    stopTime = 2 * distWeight[i].distance / speed;                                          //2 * тормозной путь / скорость
-    stopTimeWeight = 2 * distWeight[i].distance * distWeight[i].weight / (speed * 1000);    //2 * тормозной путь * вес / (скорость / 1000)
+	stopTime = 2 * distWeight[i].distance * distWeight[i].weight / ((speed / 3.6) * 1000);    //2 * тормозной путь * вес / ((скорость / 3.6) * 1000)
+}																							  //Вес / 1000 определяет коэффициент времени торможения от веса
+
+float HelloWorld::roadSpeed() {         //Скорость перемещения дороги
+    return -1 * speed;
 }
 
-float HelloWorld::roadSpeed() {         //Обычная скорость перемещения дороги
-    return -1 * speed * stopTime;
-}
-
-float HelloWorld::roadSpeedEase() {     //Скорость перемещения дороги при торможении
-    return roadSpeed() / 2.0;
-}
-
-float HelloWorld::distToDeg() {         //Обычная скорость вращения колёс
+float HelloWorld::distToDeg() {         //Скорость вращения колёс
     float deg;              //360 * Скорость движения дороги / длина окружности колеса
     deg = -roadSpeed() / (M_PI * (tireFront->getContentSize().width * tireFront->getScale()));
-    deg *= 360;
-    return deg;
-}
-
-float HelloWorld::distToDegEase() {     //Скорость вращения колёс при торможении
-    float deg;
-    deg = -roadSpeedEase() / (M_PI * (tireFront->getContentSize().width * tireFront->getScale()));
     deg *= 360;
     return deg;
 }
@@ -336,27 +320,29 @@ bool HelloWorld::loadData() {   //Получение данных из файл�
     rapidjson::Value &weights = doc["weight"];
 
     countDistWeight = distances.Size();     //Заполняем количество элементов массива
+    delete distWeight;
     distWeight = new DistWeight[countDistWeight];
-    for (rapidjson::SizeType i = 0; i < countDistWeight; i++) { //Заполняем сам массив
+    for (int i = 0; i < countDistWeight; i++) { //Заполняем сам массив
         distWeight[i].distance = distances[i].GetFloat();
         distWeight[i].weight = weights[i].GetFloat();
     }
     speed = doc.FindMember("speed")->value.GetFloat();  //Получаем скорость и радиус колёс
     tires = doc.FindMember("tires")->value.GetFloat();
 
-    textSpeed->setString(to_string(speed / 10.0));  //Заполняем визуальные компоненты
+    textSpeed->setString(to_string(speed));  //Заполняем визуальные компоненты
     textTires->setString(to_string(tires));
-    tireFront->setScale(0.08 * tires / 30);
-    tireBack->setScale(0.08 * tires / 30);
+    tireFront->setScale(averResize * 0.06 * tires / 30);
+    tireBack->setScale(averResize * 0.06 * tires / 30);
 
     return true;
 }
 
 void HelloWorld::distWeightRand() {     //Случайное заполнение тормозного пути и веса
-    countDistWeight = rand_0_1() * 9 + 5;   //Количество элементов
+    countDistWeight = rand_0_1() * 19 + 5;   //Количество элементов
+    delete distWeight;
     distWeight = new DistWeight[countDistWeight];
     for (int i = 0; i < countDistWeight; i++) {
-        distWeight[i].distance = rand_0_1() * 1000.0 + 100;
+        distWeight[i].distance = rand_0_1() * 100.0 + 10;
         distWeight[i].weight = rand_0_1() * 500.0 + 1000;
     }
 }
@@ -365,6 +351,7 @@ void HelloWorld::distWeightManual() {   //Ручное заполнение то
     float tmpd[] = {45,     55,     16,     72,     21,     96};    //Сначала заполняются отдельные массивы
     float tmpw[] = {1369,   1176,   1485,   1163,   1290,   1393};  //А затем на их основе заполняется массив структур
     countDistWeight = sizeof(tmpd) / sizeof(float);
+    delete distWeight;
     distWeight = new DistWeight[countDistWeight];
     for (int i = 0; i < countDistWeight; i++) {
         distWeight[i].distance = tmpd[i];
@@ -385,4 +372,23 @@ int HelloWorld::getRandDistWeight() {   //Получение случайног�
         sum += distWeight[i].weight;
     }
     return countDistWeight - 1;
+}
+
+///---------- Определение методов наследника класса ActionEase ----------
+
+Ease::Ease(float time, float spd, Node *elem, int type) {	//Конструктор
+    this->setDuration(time);
+    this->speed = spd;
+    this->setTarget(elem);
+    this->setFlags(type);	//Тип преобразования элемента
+}
+
+void Ease::update(float time) {	//Вызывается автоматически каждый кадр
+    time = 1 - time;	//Изначально time идёт последовательно от 0 до 1, меняем наоборот
+    if (!this->_done) {	//Пока время не вышло
+        if (this->getFlags() == 0)	//Если преобразование перемещения, то перемещаем
+            this->getTarget()->setPositionX(this->speed * time + this->getTarget()->getPositionX());
+        else if (this->getFlags() == 1)	//Если преобразование вращения, то вращаем
+            this->getTarget()->setRotation(this->speed * time + this->getTarget()->getRotation());
+    }
 }

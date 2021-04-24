@@ -1,9 +1,4 @@
 ninja: Entering directory `C:\cocos2d-x-3.17.2\Project\test3\proj.android\app\.cxx\cmake\debug\x86'
-[1/2] Building CXX object CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o
-In file included from ../../../../../../Classes/HelloWorldScene.cpp:25:
-../../../../../../Classes/HelloWorldScene.h:132:8: warning: extra tokens at end of #endif directive [-Wextra-tokens]
-#endif __HELLOWORLD_SCENE_H__
-       ^
-       //
-1 warning generated.
-[2/2] Linking CXX shared library ..\..\..\..\build\intermediates\cmake\debug\obj\x86\libMyGame.so
+[1/3] Building CXX object CMakeFiles/MyGame.dir/Classes/AppDelegate.cpp.o
+[2/3] Building CXX object CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o
+[3/3] Linking CXX shared library ..\..\..\..\build\intermediates\cmake\debug\obj\x86\libMyGame.so

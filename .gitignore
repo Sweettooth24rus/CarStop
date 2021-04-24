@@ -1,1 +1,7 @@
+*.o
+*.cpp.o
 *.a
+*.obj
+*.pch
+*.pdb
+*.ipch
