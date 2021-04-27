@@ -166,11 +166,7 @@ bool HelloWorld::init() {
             buttonStop->setEnabled(true);
             textDistance->setString(to_string(distWeight[i].distance));
             textWeight->setString(to_string(distWeight[i].weight));
-
-			roadPart1->stopAllActions();
-			roadPart2->stopAllActions();
-			tireFront->stopAllActions();
-			tireBack->stopAllActions();
+			unschedule(schedule_selector(HelloWorld::roadStop));
 			
 			setStopTime(i); //Вычисляем время торможения
 
@@ -183,15 +179,8 @@ bool HelloWorld::init() {
             buttonStop->setEnabled(false);
             unschedule(schedule_selector(HelloWorld::roadMove));	//Убираем постоянное движение
 
-            roadPart1Ease = new Ease(stopTime, roadSpeed(), roadPart1, Ease::MOVE); //Создаём "плавное торможение"
-            roadPart2Ease = new Ease(stopTime, roadSpeed(), roadPart2, Ease::MOVE);
-            tireFrontEase = new Ease(stopTime, distToDeg(), tireFront, Ease::ROTATE);
-            tireBackEase = new Ease(stopTime, distToDeg(), tireBack, Ease::ROTATE);
-
-            roadPart1->runAction(roadPart1Ease);    //Добавляем объектам движение на время торможения
-            roadPart2->runAction(roadPart2Ease);
-            tireFront->runAction(tireFrontEase);
-            tireBack->runAction(tireBackEase);
+			stopTimeTmp = stopTimeFull;
+			this->schedule(schedule_selector(HelloWorld::roadStop));	//Запускаем остановку
         }
     });
 
@@ -263,15 +252,26 @@ void HelloWorld::roadCircle(float dt) { //Зацикливание дороги
         roadPart2->setPositionX(roadPart1->getPositionX() + roadPart1->getContentSize().width * averResize - 5);  //То она появляется справа
 }
 
-void HelloWorld::roadMove(float dt) {
+void HelloWorld::roadMove(float dt) {	//Равномерное движение дороги
     roadPart1->setPositionX(roadPart1->getPositionX() + roadSpeed());
     roadPart2->setPositionX(roadPart2->getPositionX() + roadSpeed());
     tireFront->setRotation(tireFront->getRotation() + distToDeg());
     tireBack->setRotation(tireBack->getRotation() + distToDeg());
 }
 
+void HelloWorld::roadStop(float dt) {	//Движение дороги с остановкой
+	stopTimeTmp -= dt;
+	if (stopTimeTmp <= 0)		//Если время вышло
+		this->unschedule(schedule_selector(HelloWorld::roadStop));
+	float tmp = stopTimeTmp / stopTimeFull;
+	roadPart1->setPositionX(roadPart1->getPositionX() + roadSpeed() * tweenfunc::sineEaseOut(tmp));	//Уменьшение скорости
+	roadPart2->setPositionX(roadPart2->getPositionX() + roadSpeed() * tweenfunc::sineEaseOut(tmp));	//По функции
+	tireFront->setRotation(tireFront->getRotation() + distToDeg() * tweenfunc::sineEaseOut(tmp));	//sineEaseOut
+	tireBack->setRotation(tireBack->getRotation() + distToDeg() * tweenfunc::sineEaseOut(tmp));
+}
+
 void HelloWorld::setStopTime(int i) {                                                       //Вычисление времени торможения
-	stopTime = 2 * distWeight[i].distance * distWeight[i].weight / ((speed / 3.6) * 1000);    //2 * тормозной путь * вес / ((скорость / 3.6) * 1000)
+	stopTimeFull = 2 * distWeight[i].distance * distWeight[i].weight / ((speed / 3.6) * 1000);    //2 * тормозной путь * вес / ((скорость / 3.6) * 1000)
 }																							  //Вес / 1000 определяет коэффициент времени торможения от веса
 
 float HelloWorld::roadSpeed() {         //Скорость перемещения дороги
@@ -372,23 +372,4 @@ int HelloWorld::getRandDistWeight() {   //Получение случайног�
         sum += distWeight[i].weight;
     }
     return countDistWeight - 1;
-}
-
-///---------- Определение методов наследника класса ActionEase ----------
-
-Ease::Ease(float time, float spd, Node *elem, int type) {	//Конструктор
-    this->setDuration(time);
-    this->speed = spd;
-    this->setTarget(elem);
-    this->setFlags(type);	//Тип преобразования элемента
-}
-
-void Ease::update(float time) {	//Вызывается автоматически каждый кадр
-    time = 1 - time;	//Изначально time идёт последовательно от 0 до 1, меняем наоборот
-    if (!this->_done) {	//Пока время не вышло
-        if (this->getFlags() == 0)	//Если преобразование перемещения, то перемещаем
-            this->getTarget()->setPositionX(this->speed * time + this->getTarget()->getPositionX());
-        else if (this->getFlags() == 1)	//Если преобразование вращения, то вращаем
-            this->getTarget()->setRotation(this->speed * time + this->getTarget()->getRotation());
-    }
 }

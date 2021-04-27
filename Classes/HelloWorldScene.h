@@ -33,25 +33,12 @@
 #include "external/json/ostreamwrapper.h"
 #include "external/json/istreamwrapper.h"
 #include "external/json/writer.h"
+#include "2d\CCTweenFunction.h"
 
 using namespace cocos2d;
 using namespace ui;
 using namespace std;
 using namespace rapidjson;
-
-///---------- Класс наследник ease для торможения ----------
-
-class Ease : public ActionEase {
-private:
-    float speed;
-public:
-	const static int MOVE = 0;
-	const static int ROTATE = 1;
-
-	Ease(float time, float spd, Node* elem, int type);
-
-	void update(float time) override;
-};
 
 ///---------- Главный класс приложения ----------
 
@@ -97,22 +84,25 @@ private:
     TextField *textWeight;
     TextField *textTires;
 
-    Ease *roadPart1Ease;
-	Ease *roadPart2Ease;
-	Ease *tireFrontEase;
-	Ease *tireBackEase;
+    //Ease *roadPart1Ease;
+	//Ease *roadPart2Ease;
+	//Ease *tireFrontEase;
+	//Ease *tireBackEase;
 
     int countDistWeight;
     DistWeight *distWeight;
     float speed;
-    float stopTime;
+    float stopTimeFull;
     float tires;
+	float stopTimeTmp;
 
     ///---------- Функции ----------
 
     void roadCircle(float dt);
 
     void roadMove(float dt);
+
+	void roadStop(float dt);
 
     void setStopTime(int i);
 
